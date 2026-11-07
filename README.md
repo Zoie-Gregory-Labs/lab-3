@@ -55,4 +55,4 @@ The system will use Java and a MySQL database.
 
 ## Development Status
 
-The initial user stories and use-case documentation have been prepared. Java application development and database integration are the next stages.
+The initial user stories and use-case documentation have been prepared. The employee record viewing feature has been developed, including the Java application classes and database connection configuration.
