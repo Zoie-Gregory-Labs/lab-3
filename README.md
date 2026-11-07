@@ -54,3 +54,5 @@ The system will use Java and a MySQL database.
 - `feature/view-record` – Employee record viewing feature.
 
 ## Development Status
+
+The initial user stories and use-case documentation have been prepared. The employee record viewing feature has been developed, including the Java application classes and database connection configuration.
