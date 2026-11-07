@@ -1,6 +1,4 @@
 # lab-3
-# lab-3
-
 # HR Management System
 
 ## Project Overview
