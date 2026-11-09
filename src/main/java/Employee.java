@@ -8,6 +8,7 @@ public class Employee {
     private String department;
     private String manager;
 
+    // Original Lab 3 constructor
     public Employee(int empNo, String firstName, String lastName,
                     String title, int salary, String department, String manager) {
 
@@ -18,6 +19,31 @@ public class Employee {
         this.salary = salary;
         this.department = department;
         this.manager = manager;
+    }
+
+    // New Lab 4 constructor
+    public Employee(int empNo, String firstName, String lastName, int salary) {
+
+        this.empNo = empNo;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+    }
+
+    public int getEmpNo() {
+        return empNo;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getSalary() {
+        return salary;
     }
 
     public void displayEmployee() {
