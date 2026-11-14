@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeeDAO {
 
@@ -48,5 +49,36 @@ public class EmployeeDAO {
         }
 
         return null;
+    }
+
+    public ArrayList<Employee> getAllSalaries() {
+
+        ArrayList<Employee> employees = new ArrayList<>();
+
+        String sql = "SELECT employees.emp_no, employees.first_name, " +
+                     "employees.last_name, salaries.salary " +
+                     "FROM employees, salaries " +
+                     "WHERE employees.emp_no = salaries.emp_no " +
+                     "AND salaries.to_date = '9999-01-01' " +
+                     "ORDER BY employees.emp_no ASC";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet result = statement.executeQuery()) {
+
+            while (result.next()) {
+                employees.add(new Employee(
+                    result.getInt("emp_no"),
+                    result.getString("first_name"),
+                    result.getString("last_name"),
+                    result.getInt("salary")
+                ));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+
+        return employees;
     }
 }
