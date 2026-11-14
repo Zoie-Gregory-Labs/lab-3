@@ -35,4 +35,9 @@ public class Employee {
         System.out.println("Department: " + department);
         System.out.println("Manager: " + manager);
     }
+    
+public void printSalary() {
+    System.out.println(
+        empNo + " " + firstName + " " + lastName + " " + salary
+    );
 }
