@@ -11,5 +11,9 @@ public class App {
         ArrayList<Employee> employees = employeeDAO.getAllSalaries();
 
         System.out.println(employees.size());
+
+        for (Employee employee : employees) {
+            employee.printSalary();
+        }
     }
 }
