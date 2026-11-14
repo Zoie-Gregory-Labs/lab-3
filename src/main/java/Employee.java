@@ -19,7 +19,12 @@ public class Employee {
         this.department = department;
         this.manager = manager;
     }
-
+   public Employee(int empNo, String firstName, String lastName, int salary) {
+    this.empNo = empNo;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.salary = salary;
+}
     public void displayEmployee() {
 
         System.out.println("Employee Number: " + empNo);
