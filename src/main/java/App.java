@@ -35,6 +35,7 @@ public class App {
             ArrayList<Employee> employees = employeeDAO.getAllSalaries();
 
             if (employees != null && !employees.isEmpty()) {
+                System.out.println(employees.size());
                 printSalaries(employees);
             } else {
                 System.out.println("No salary records found.");
