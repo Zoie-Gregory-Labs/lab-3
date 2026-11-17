@@ -1,3 +1,4 @@
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -5,7 +6,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     private static final String URL =
-            "jdbc:mysql://db:3306/employees?useSSL=false";
+            "jdbc:mysql://db:3306/employees?useSSL=false&allowPublicKeyRetrieval=true";
 
     private static final String USER = "root";
     private static final String PASSWORD = "example";
@@ -14,3 +15,4 @@ public class DatabaseConnection {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
+
