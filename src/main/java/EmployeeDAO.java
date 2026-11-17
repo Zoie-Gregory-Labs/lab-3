@@ -202,6 +202,43 @@ public class EmployeeDAO {
         } catch (SQLException e) {
             System.out.println("Database error: " + e.getMessage());
             return null;
+      
         }
     }
+    // Lab 5 Exercise: Retrieve an employee by first and last name
+    public Employee getEmployee(String firstName, String lastName) {
+
+        String sql = "SELECT emp_no, first_name, last_name, salary " +
+                     "FROM employees " +
+                     "JOIN salaries USING (emp_no) " +
+                     "WHERE first_name = ? " +
+                     "AND last_name = ? " +
+                     "AND salaries.to_date = '9999-01-01' " +
+                     "ORDER BY emp_no ASC";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+
+            try (ResultSet result = statement.executeQuery()) {
+
+                if (result.next()) {
+                    return new Employee(
+                        result.getInt("emp_no"),
+                        result.getString("first_name"),
+                        result.getString("last_name"),
+                        result.getInt("salary")
+                    );
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+
+        return null;
+    }
 }
+   
