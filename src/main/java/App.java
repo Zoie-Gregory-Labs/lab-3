@@ -12,9 +12,11 @@ public class App {
         System.out.println("HR Management System");
         System.out.println("1. View Employee Details");
         System.out.println("2. View All Employee Salaries");
+        System.out.println("3. View Salaries by Department");
         System.out.print("Select an option: ");
 
         int choice = scanner.nextInt();
+        scanner.nextLine();
 
         if (choice == 1) {
 
@@ -35,10 +37,34 @@ public class App {
             ArrayList<Employee> employees = employeeDAO.getAllSalaries();
 
             if (employees != null && !employees.isEmpty()) {
-                System.out.println(employees.size());
                 printSalaries(employees);
             } else {
                 System.out.println("No salary records found.");
+            }
+
+        } else if (choice == 3) {
+
+            System.out.print("Enter Department Name: ");
+            String departmentName = scanner.nextLine();
+
+            Department department =
+                    employeeDAO.getDepartment(departmentName);
+
+            if (department != null) {
+
+                System.out.println("\nDepartment: " + department.dept_name);
+
+                ArrayList<Employee> employees =
+                        employeeDAO.getSalariesByDepartment(department);
+
+                if (employees != null && !employees.isEmpty()) {
+                    printSalaries(employees);
+                } else {
+                    System.out.println("No salary records found.");
+                }
+
+            } else {
+                System.out.println("Department not found.");
             }
 
         } else {
