@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -76,14 +75,29 @@ public class App {
 
     public static void printSalaries(ArrayList<Employee> employees) {
 
+        // Check employees is not null
+        if (employees == null) {
+            System.out.println("No employees");
+            return;
+        }
+
+        // Print heading
         System.out.println("\nCurrent Employee Salaries");
 
-        System.out.println(String.format("%-10s %-15s %-20s %-10s",
+        System.out.println(String.format(
+                "%-10s %-15s %-20s %-10s",
                 "Emp No", "First Name", "Last Name", "Salary"));
 
+        // Print employee details
         for (Employee emp : employees) {
 
-            String empString = String.format("%-10s %-15s %-20s %-10s",
+            // Skip null employees
+            if (emp == null) {
+                continue;
+            }
+
+            String empString = String.format(
+                    "%-10s %-15s %-20s %-10s",
                     emp.getEmpNo(),
                     emp.getFirstName(),
                     emp.getLastName(),
