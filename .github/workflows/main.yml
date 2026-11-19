@@ -23,7 +23,7 @@ jobs:
       - name: Unit Tests
         run: mvn -Dtest=AppTest test
 
-      -- name: Package and Build Docker Compose
+      - name: Package and Build Docker Compose
         run: |
           mvn package -DskipTests
           docker compose build
